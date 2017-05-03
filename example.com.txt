@@ -1,0 +1,16 @@
+IN  NS  ns1.p00.dynect.net.
+IN  NS  ns2.p00.dynect.net.
+IN  NS  ns3.p00.dynect.net.
+IN  NS  ns5.dnsmadeeasy.com.
+IN  NS  ns6.dnsmadeeasy.com.
+IN  NS  ns7.dnsmadeeasy.com.
+IN  NS  ns1.easydns.com.
+IN  NS  ns3.easydns.com.
+IN  NS  ns5.easydns.com.
+example.com.		86400	IN	TXT	"123456-123456"
+example.com.		86400	IN	TXT	"google-site-verification=Aiyah8aiwuqueZe4be5shohgh4ga0quuojutheigho2e"
+example.com.		86400	IN	TXT	"google-site-verification=eib5liephairei6cee6iThekeexa4yohK8boa3een0oe"
+example.com.		1800 IN	A	93.184.216.34
+*.example.com.		1800	IN	A	93.184.216.34
+2013.example.com.		1800	IN	A	255.223.225.188
+platypus.example.com		1800	A	52.22.22.225
