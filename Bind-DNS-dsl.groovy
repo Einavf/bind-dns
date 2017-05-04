@@ -8,13 +8,13 @@ freeStyleJob("Bind-DNS-dsl-test1"){
     scm {
         git {
             remote {
-                url('git@github.com:kenshoo/jenkins.git')
-                credentials('3f510033-65a9-4afd-9851-c7359bd3f9db')
-                refspec('+refs/pull/*:refs/remotes/origin/pr/*')
+      //          url('git@github.com:kenshoo/jenkins.git')
+      //          credentials('3f510033-65a9-4afd-9851-c7359bd3f9db')
+      //          refspec('+refs/pull/*:refs/remotes/origin/pr/*')
             }
 
             configure { node ->
-                node / 'extensions' / 'hudson.plugins.git.extensions.impl.CleanBeforeCheckout' {}
+      //          node / 'extensions' / 'hudson.plugins.git.extensions.impl.CleanBeforeCheckout' {}
             }
 
             branch("origin/master")
@@ -33,7 +33,7 @@ freeStyleJob("Bind-DNS-dsl-test1"){
           }
 
         project / 'properties' <<'com.coravy.hudson.plugins.github.GithubProjectProperty'(plugin:'github@1.11.3'){
-              projectUrl 'https://github.com/kenshoo/jenkins/'
+        //      projectUrl 'https://github.com/kenshoo/jenkins/'
         }
     }
 
