@@ -1,4 +1,4 @@
-freeStyleJob("Bind-DNS-dsl"){
+freeStyleJob("Bind-DNS-dsl-test1"){
     	description 'dsl for the Bind-DNS job'
   		label('master')
   		keepDependencies(true)
