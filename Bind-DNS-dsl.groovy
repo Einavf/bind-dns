@@ -28,12 +28,12 @@ freeStyleJob("Bind-DNS-test1"){
                     command "#!/bin/bash\n" +
               "sudo named-checkzone nyc3.example.com example.com.txt\n" +                
               "if [ '\$'? -ne 0 ];\n" +                
-              " then\n" +                
-              'echo "************************************************************************************"\n' +             
+              "then\n" +                
+                'echo "************************************************************************************"\n' +             
               "echo named-checkzone failed due to errors in the file, please fix and run the job again\n" +
-              'echo "*************************************************************************************"\n' +
-              "exit 1\n" +
-              "fi"
+                'echo "*************************************************************************************"\n' +
+                 "exit 1\n" +
+              "fi\n"
             }
           }
 
