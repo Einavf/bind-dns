@@ -8,9 +8,8 @@ freeStyleJob("Bind-DNS-test1"){
     scm {
         git {
             remote {
-                url('git@github.com:kenshoo/jenkins.git')
-                credentials('3f510033-65a9-4afd-9851-c7359bd3f9db')
-                refspec('+refs/pull/*:refs/remotes/origin/pr/*')
+                url('https://github.com/Einavf/bind-dns.git')
+                
             }
 
             configure { node ->
@@ -30,16 +29,16 @@ freeStyleJob("Bind-DNS-test1"){
               "sudo named-checkzone nyc3.example.com example.com.txt\n" +                
               "if [ '\$'? -ne 0 ];\n" +                
               " then\n" +                
-                "echo ************************************************************************************\n" +             
+                "echo '************************************************************************************'\n" +             
               "echo named-checkzone failed due to errors in the file, please fix and run the job again\n" +
-                "echo *************************************************************************************\n" +
+                "echo '*************************************************************************************'\n" +
                  "exit 1\n" +
               "fi"
             }
           }
 
         project / 'properties' <<'com.coravy.hudson.plugins.github.GithubProjectProperty'(plugin:'github@1.11.3'){
-              projectUrl 'https://github.com/kenshoo/jenkins/'
+              projectUrl 'https://github.com/Einavf/bind-dns.git'
         }
     }
 
