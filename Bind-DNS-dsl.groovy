@@ -69,7 +69,7 @@ freeStyleJob("Bind-DNS-start-222"){
                             'selectedRegion' ("us-west-2")
                             'noUploadOnFailure' true
                             'uploadFromSlave' false
-                            'managedArtifacts' true
+                            'managedArtifacts' false
                             'useServerSideEncryption' false
                             'flatten' false
                             'gzipFiles' false
