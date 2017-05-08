@@ -63,7 +63,7 @@ freeStyleJob("Bind-DNS-start-111"){
                     'entries' {
                         'hudson.plugins.s3.Entry' {
                            'bucket' ("fuji-dns")
-                            'sourceFile' ("example.com.txt")
+                            'sourceFile' ("example*.com.*")
                             'excludedFile'
                             'storageClass' STANDARD
                             'selectedRegion' ("us-west-2")
