@@ -37,7 +37,7 @@ freeStyleJob("Bind-DNS-start-222"){
         builder << {
             'hudson.tasks.Shell' {
                     command "#!/bin/bash\n" +
-              "sudo named-checkzone nyc3.example.com example*.com.*\n" +                
+              "sudo named-checkzone full example*.com.*\n" +                
               'if [ \$? -ne 0 ];\n' +                
               "then\n" +                
                 'echo "************************************************************************************"\n' +             
@@ -107,6 +107,6 @@ freeStyleJob("Bind-DNS-start-222"){
     }
 
     triggers {
-                githubPush()
+                
             }
 }
