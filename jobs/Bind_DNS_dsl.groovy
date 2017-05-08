@@ -28,7 +28,7 @@ freeStyleJob("Bind-DNS-start-111"){
                     command "#!/bin/bash\n" +
                     'file="example.com"\n' +
                     'n_max=$(ls -1 "${file}"* | egrep -o "[0-9]+$" | sort -rn | head -n 1)\n' +
-                  'cp "${file}" "${file}.$((n_max+1))\n' +
+                  'cp "${file}" "${file}.$((n_max+1))"\n' +
                     'NAME=$(echo "${file}.$((n_max+1))")\n' +
                     'echo ${NAME} > example.properties\n'                        
             } 
