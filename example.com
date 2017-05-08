@@ -1,5 +1,5 @@
 $TTL	604800
-@	IN	SOA	ns1.nyc3.example.com. admin.nyc3.example.com. 1 (
+@	IN	SOA	ns1.nyc3.example.com. admin.nyc3.example.com. (
                               3         ; Serial
 			  604800	; Refresh
 			  86400		; Retry
