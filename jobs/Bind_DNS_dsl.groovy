@@ -1,5 +1,5 @@
-freeStyleJob("Bind-DNS-test1"){
-      description 'dsl for the Bind-DNS job'
+freeStyleJob("Bind-DNS-start-111"){
+      description 'bind-dsl full job dsl'
       label('master')
       keepDependencies(true)
 
@@ -23,10 +23,21 @@ freeStyleJob("Bind-DNS-test1"){
 
     configure { project ->
         def builder = project / 'builders'
-          builder << {
+        builder << {
             'hudson.tasks.Shell' {
                     command "#!/bin/bash\n" +
-              "sudo named-checkzone nyc3.example.com example.com.txt\n" +                
+                    'file="example.com"\n' +
+                    'n_max=$(ls -1 "${file}"* | egrep -o "[0-9]+$" | sort -rn | head -n 1)\n' +
+                  'cp "${file}" "${file}.$((n_max+1))\n' +
+                    'NAME=$(echo "${file}.$((n_max+1))")\n' +
+                    'echo ${NAME} > example.properties\n'                        
+            } 
+        }
+        
+        builder << {
+            'hudson.tasks.Shell' {
+                    command "#!/bin/bash\n" +
+              "sudo named-checkzone nyc3.example.com example*.com.*\n" +                
               'if [ \$? -ne 0 ];\n' +                
               "then\n" +                
                 'echo "************************************************************************************"\n' +             
