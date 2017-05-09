@@ -1,38 +1,35 @@
 freeStyleJob("Bind-DNS-start-222"){
-      description 'bind-dsl full job dsl'
-      label('master')
-      keepDependencies(true)
+description 'bind-dsl full job dsl'
+label('master')
+keepDependencies(true)
 
-    logRotator(20,40)
-
-    scm {
-        git {
-            remote {
-                url('https://github.com/Einavf/bind-dns.git')
-                
-            }
+logRotator(20,40)
+  scm {
+      git {
+          remote {
+              url('https://github.com/Einavf/bind-dns.git')
+                  }
 
             configure { node ->
                 node / 'extensions' / 'hudson.plugins.git.extensions.impl.CleanBeforeCheckout' {}
             }
 
             branch("origin/master")
+            }
         }
-    }
-
 
     configure { project ->
-        def builder = project / 'builders'
-        builder << {
-            'hudson.tasks.Shell' {
-                    command "#!/bin/bash\n" +
-                    'file="example.com"\n' +
-                    'n_max=$(ls -1 "${file}"* | egrep -o "[0-9]+$" | sort -rn | head -n 1)\n' +
-                  'cp "${file}" "${file}.$((n_max+1))"\n' +
-                    'NAME=$(echo "${file}.$((n_max+1))")\n' +
-                    'echo ${NAME} > example.properties\n'                        
-            } 
-        }
+          def builder = project / 'builders'
+            builder << {
+                'hudson.tasks.Shell' {
+                      command "#!/bin/bash\n" +
+                      'file="example.com"\n' +
+                      'n_max=$(ls -1 "${file}"* | egrep -o "[0-9]+$" | sort -rn | head -n 1)\n' +
+                    'cp "${file}" "${file}.$((n_max+1))"\n' +
+                      'NAME=$(echo "${file}.$((n_max+1))")\n' +
+                      'echo ${NAME} > example.properties\n'                        
+                    } 
+                }
         
         builder << {
             'hudson.tasks.Shell' {
@@ -45,14 +42,14 @@ freeStyleJob("Bind-DNS-start-222"){
                 'echo "*************************************************************************************"\n' +
                  "exit 1\n" +
               "fi\n"
-            }
-          }
+                    }
+              }
 
 
-        project / 'properties' <<'com.coravy.hudson.plugins.github.GithubProjectProperty'(plugin:'github@1.11.3'){
+    project / 'properties' <<'com.coravy.hudson.plugins.github.GithubProjectProperty'(plugin:'github@1.11.3'){
               projectUrl 'https://github.com/Einavf/bind-dns.git'
-        }
-    }
+              }
+           }
 
     configure { project ->
           def publishers = project / 'publishers'
@@ -90,23 +87,16 @@ freeStyleJob("Bind-DNS-start-222"){
                         'completeBuild' true
                         }
                       'userMetadata'
-                        
-                       
-                   }
-                        
-                    }
-                 
-              
-              }
-        
-    }
+                        }
+                     }
+                  }
+                }
 
     wrappers {
             preBuildCleanup()
-            injectPasswords()
-    }
+            }
 
     triggers {
-                
-            }
+            
+   }
 }
